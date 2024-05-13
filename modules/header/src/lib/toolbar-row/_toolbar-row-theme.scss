@@ -1,0 +1,42 @@
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  app-toolbar-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex: 1 1 auto;
+    height: 56px;
+    border-radius: 48px;
+    background: linear-gradient(
+      0deg,
+      rgba(105, 145, 214, 0.08),
+      rgba(105, 145, 214, 0.08)
+    );
+
+    .search-field {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-grow: 1;
+
+      .mat-mdc-text-field-wrapper,
+      .mat-mdc-form-field-focus-overlay {
+        background: none;
+      }
+
+      .mat-mdc-form-field-subscript-wrapper,
+      .mdc-line-ripple {
+        display: none;
+      }
+
+      &.mat-focused .mat-mdc-input-element::placeholder {
+        color: #{mat.get-theme-color($theme, primary)};
+      }
+
+      .mat-mdc-form-field-infix {
+        width: unset;
+      }
+    }
+  }
+}

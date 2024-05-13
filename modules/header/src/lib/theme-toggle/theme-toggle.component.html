@@ -1,0 +1,11 @@
+<button
+  mat-icon-button
+  (click)="toggleTheme()"
+  [matTooltip]="darkTheme ? 'Switch to light theme' : 'Switch to dark theme'"
+>
+  @if (darkTheme) {
+    <mat-icon>light_mode</mat-icon>
+  } @else {
+    <mat-icon>dark_mode</mat-icon>
+  }
+</button>

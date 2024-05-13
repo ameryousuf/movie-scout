@@ -1,8 +1,12 @@
 @use '@angular/material' as mat;
 
+@use '../modules/header/src/lib/toolbar-row/toolbar-row-theme';
+
 @mixin theme($theme) {
   body {
     background: mat.get-theme-color($theme, surface);
     color: mat.get-theme-color($theme, on-surface);
   }
+
+  @include toolbar-row-theme.theme($theme);
 }
