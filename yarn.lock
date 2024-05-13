@@ -2987,12 +2987,27 @@
     "@material/theme" "15.0.0-canary.7f224ddd4.0"
     tslib "^2.1.0"
 
+"@ngrx/component-store@^17.2.0":
+  version "17.2.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/component-store/-/component-store-17.2.0.tgz#441c02be3dd5dc9ef98c95a1a1c12656e2e47c4f"
+  integrity sha512-ywhyoZpkbVIY1t5zf7xfWLGkY0A/fQdMjPehHloDI6bRLrmbllBhQRazwZ+FAGIi2myx1+mGcmAc6FbtIikedA==
+  dependencies:
+    "@ngrx/operators" "17.0.0-beta.0"
+    tslib "^2.0.0"
+
 "@ngrx/effects@^17.2.0":
   version "17.2.0"
   resolved "https://registry.npmjs.org/@ngrx/effects/-/effects-17.2.0.tgz"
   integrity sha512-tXDJNsuBtbvI/7+vYnkDKKpUvLbopw1U5G6LoPnKNrbTPsPcUGmCqF5Su/ZoRN3BhXjt2j+eoeVdpBkxdxMRgg==
   dependencies:
     "@ngrx/operators" "17.0.0-beta.0"
+    tslib "^2.0.0"
+
+"@ngrx/entity@^17.2.0":
+  version "17.2.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-17.2.0.tgz#5b9a01bd237f247a9901824824352c7e09c1bbeb"
+  integrity sha512-epXgojGXCrVMNrFdv60704iRUU+pYkE1qHBppP/wqKbZZIZHaagsg2jy8/ptDP7U3udvVq0z9suc1s+zpmL2EA==
+  dependencies:
     tslib "^2.0.0"
 
 "@ngrx/eslint-plugin@^17.2.0":
@@ -8328,6 +8343,11 @@ neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
+ng-mocks@^14.12.2:
+  version "14.12.2"
+  resolved "https://registry.yarnpkg.com/ng-mocks/-/ng-mocks-14.12.2.tgz#43f359eed7629b9f5bab240ed041698916e61e11"
+  integrity sha512-7HFb1G4I9885ipqdm0o+kPhFvy5EfEooIfl1DqxA84rvig6FhugZ8UDgV6YPYlwnGQyfwmAOexoPTuSVs36bhw==
 
 nice-napi@^1.0.2:
   version "1.0.2"

@@ -48,7 +48,11 @@
       "e2eTestRunner": "none",
       "linter": "eslint",
       "style": "scss",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest-jasmine2"
+    },
+    "@nx/angular:component": {
+      "style": "scss",
+      "changeDetection": "OnPush"
     }
   },
   "defaultProject": "movie-scout"
