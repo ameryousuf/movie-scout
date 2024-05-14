@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@movie-scout/catalog": ["modules/catalog/src/index.ts"],
       "@movie-scout/core": ["modules/core/src/index.ts"],
       "@movie-scout/header": ["modules/header/src/index.ts"]
     }
