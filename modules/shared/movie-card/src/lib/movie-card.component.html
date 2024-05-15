@@ -1,7 +1,14 @@
 <div class="flex flex-col gap-2">
   <div class="movie-card-poster">
-    @if (movie().posterUrl) {
-      <img [src]="movie().posterUrl" [alt]="movie().title" />
+    @if (movie().posterUrl; as posterUrl) {
+      <img
+        [ngSrc]="posterUrl"
+        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 15vw"
+        ngSrcset="375w, 500w, 750w, 900w"
+        [alt]="movie().title"
+        placeholder
+        fill
+      />
     } @else {
       <div class="flex items-center h-full text-center p-2">
         <span class="text-3xl font-bold">{{ movie().title }}</span>

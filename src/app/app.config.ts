@@ -2,14 +2,15 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, isDevMode } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
+import {
+  authInterceptor,
+  provideAppConfigInitializer,
+  provideOptimizedImageLoader,
+} from '@movie-scout/core';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { appRoutes } from './app.routes';
-import {
-  authInterceptor,
-  provideAppConfigInitializer,
-} from '@movie-scout/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +21,6 @@ export const appConfig: ApplicationConfig = {
     provideEffects(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideAppConfigInitializer('/assets/config.json'),
+    provideOptimizedImageLoader(),
   ],
 };
