@@ -1,0 +1,19 @@
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  app-movie-card {
+    .movie-card-poster {
+      position: relative;
+      border-radius: 12px;
+      height: 360px;
+      overflow: hidden;
+      background: mat.get-theme-color($theme, surface-container-high);
+      color: mat.get-theme-color($theme, on-surface-variant);
+
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

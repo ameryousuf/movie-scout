@@ -1,6 +1,7 @@
 @use '@angular/material' as mat;
 
 @use '../modules/header/src/lib/toolbar-row/toolbar-row-theme';
+@use '../modules/shared/movie-card/src/lib/movie-card-theme';
 
 @mixin theme($theme) {
   body {
@@ -9,4 +10,5 @@
   }
 
   @include toolbar-row-theme.theme($theme);
+  @include movie-card-theme.theme($theme);
 }

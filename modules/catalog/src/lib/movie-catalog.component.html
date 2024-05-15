@@ -1,1 +1,16 @@
-<span>movie-catalog works!</span>
+<mat-paginator
+  class="mb-2"
+  [pageIndex]="currentPage() - 1"
+  [length]="totalCount()"
+  [pageSize]="pageSize"
+  (page)="pageChange($event.pageIndex + 1)"
+  hidePageSize="true"
+  aria-label="Select movie page"
+/>
+<div
+  class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"
+>
+  @for (movie of movies(); track movie.id) {
+    <app-movie-card [movie]="movie" />
+  }
+</div>
