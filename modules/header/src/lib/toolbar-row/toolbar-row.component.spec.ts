@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ToolbarRowComponent } from './toolbar-row.component';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
+import { provideMockStore } from '@ngrx/store/testing';
+import { ToolbarRowComponent } from './toolbar-row.component';
 
 describe('ToolbarRowComponent', () => {
   let component: ToolbarRowComponent;
@@ -9,7 +10,7 @@ describe('ToolbarRowComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ToolbarRowComponent],
-      providers: [provideNoopAnimations()],
+      providers: [provideNoopAnimations(), provideMockStore()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ToolbarRowComponent);

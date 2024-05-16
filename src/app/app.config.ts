@@ -5,6 +5,7 @@ import { provideRouter } from '@angular/router';
 import {
   authInterceptor,
   provideAppConfigInitializer,
+  provideCoreStatesWithEffects,
   provideOptimizedImageLoader,
 } from '@movie-scout/core';
 import { provideEffects } from '@ngrx/effects';
@@ -20,6 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideEffects(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    provideCoreStatesWithEffects(),
     provideAppConfigInitializer('/assets/config.json'),
     provideOptimizedImageLoader(),
   ],

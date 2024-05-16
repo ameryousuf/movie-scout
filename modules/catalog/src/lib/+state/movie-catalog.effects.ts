@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { ApiService } from '@movie-scout/core';
+import { ApiService, UIStateActions } from '@movie-scout/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, filter, map, of, switchMap, withLatestFrom } from 'rxjs';
@@ -86,6 +86,15 @@ export class MovieCatalogEffects {
             ),
           );
       }),
+    ),
+  );
+
+  applyMovieSearchFilter$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UIStateActions.applySearchFilter),
+      map(({ searchTerm }) =>
+        MovieCatalogActions.loadMovies({ page: 1, search: searchTerm }),
+      ),
     ),
   );
 }
