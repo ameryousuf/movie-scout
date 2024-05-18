@@ -1,12 +1,19 @@
-<mat-paginator
-  class="mb-2"
-  [pageIndex]="currentPage() - 1"
-  [length]="totalCount()"
-  [pageSize]="pageSize"
-  (page)="pageChange($event.pageIndex + 1)"
-  hidePageSize="true"
-  aria-label="Select movie page"
-/>
+<div class="paginator-container flex items-center justify-between mb-2">
+  @if (selectedGenre(); as genre) {
+    <h2 class="text-xl font-bold">
+      {{ genre }} <span class="hidden md:inline">movies</span>
+    </h2>
+  }
+  <mat-paginator
+    [pageIndex]="currentPage() - 1"
+    [length]="totalCount()"
+    [pageSize]="pageSize"
+    (page)="pageChange($event.pageIndex + 1)"
+    class="flex-auto"
+    hidePageSize="true"
+    aria-label="Select movie page"
+  />
+</div>
 <div
   class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"
 >

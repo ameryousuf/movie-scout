@@ -13,8 +13,36 @@
 <button
   mat-button
   class="toggle-filter-button mx-1 md:mx-4"
+  (click)="sidebar.open()"
   aria-label="Toggle Filter"
 >
   <mat-icon matPrefix class="max-md:!mx-0">tune</mat-icon>
-  <span class="hidden md:inline">Filters</span>
+  <span
+    matBadge="0"
+    matBadgeSize="small"
+    matBadgeColor="accent"
+    matBadgeOverlap="false"
+    matBadgeDescription="filters applied"
+    [matBadgeHidden]="!filtersApplied()"
+  >
+    <span class="hidden md:inline">Filters</span>
+    <span class="inline md:hidden">&nbsp;</span>
+  </span>
 </button>
+
+<app-sidebar #sidebar position="end">
+  <div class="flex justify-end">
+    <button
+      mat-icon-button
+      (click)="sidebar.close()"
+      aria-label="Close filters sidebar"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  @defer (on viewport) {
+    <app-filters />
+  } @placeholder {
+    <span></span>
+  }
+</app-sidebar>

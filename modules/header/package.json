@@ -8,7 +8,8 @@
     "@angular/router": "~17.3.0",
     "@movie-scout/core": "0.0.1",
     "@ngrx/store": "^17.2.0",
-    "rxjs": "~7.8.0"
+    "rxjs": "~7.8.0",
+    "@movie-scout/ui": "0.0.1"
   },
   "dependencies": {},
   "sideEffects": false

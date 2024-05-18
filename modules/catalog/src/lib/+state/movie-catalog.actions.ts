@@ -3,7 +3,7 @@ import { createAction, props } from '@ngrx/store';
 
 export const loadMovies = createAction(
   '[MovieCatalog Page] Load Movies',
-  props<{ page: number; search?: string }>(),
+  props<{ page: number; search?: string; genre?: string }>(),
 );
 
 export const loadMoviesCountSuccess = createAction(

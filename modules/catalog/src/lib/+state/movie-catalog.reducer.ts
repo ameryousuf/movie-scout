@@ -9,6 +9,7 @@ export interface MovieCatalogState extends EntityState<Movie> {
   totalCountLoaded: boolean; // has the total count of movies been loaded
   page: number; // current page (starts from 1)
   searchTerm: string; // search term
+  selectedGenre: string; // selected genre
   error: string | null; // last known error (if any)
 }
 
@@ -23,18 +24,23 @@ export const initialMovieCatalogState: MovieCatalogState =
     totalCount: 0,
     page: 1,
     searchTerm: '',
+    selectedGenre: '',
     error: null,
   });
 
 const movieCatalogReducer = createReducer(
   initialMovieCatalogState,
-  on(MovieCatalogActions.loadMovies, (state, { page, search }) => {
-    // keep the previous search term if not provided
+  on(MovieCatalogActions.loadMovies, (state, { page, search, genre }) => {
+    // keep the previous search term & genre if not provided
     const searchTerm = search ?? state.searchTerm;
     const searchChanged = searchTerm !== state.searchTerm;
 
+    const selectedGenre = genre ?? state.selectedGenre;
+    const genreChanged = selectedGenre !== state.selectedGenre;
+
     // if the search term has changed, we need to reload the total count of movies
-    const totalCountLoaded = state.totalCountLoaded && !searchChanged;
+    const totalCountLoaded =
+      state.totalCountLoaded && !searchChanged && !genreChanged;
 
     return {
       ...state,
@@ -42,6 +48,7 @@ const movieCatalogReducer = createReducer(
       error: null,
       page,
       searchTerm,
+      selectedGenre,
       totalCountLoaded,
       totalCount: totalCountLoaded ? state.totalCount : 0,
     };
@@ -84,5 +91,6 @@ export const {
   selectTotalCountLoaded: selectMoviesTotalCountLoaded,
   selectPage: selectCurrentPage,
   selectSearchTerm,
+  selectSelectedGenre,
   selectError,
 } = movieCatalogFeature;

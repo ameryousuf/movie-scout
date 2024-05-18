@@ -5,6 +5,12 @@ export const applySearchFilter = createAction(
   props<{ searchTerm: string }>(),
 );
 
+export const applyGenreFilter = createAction(
+  '[Movie UI] Apply Genre Filter',
+  props<{ genre: string }>(),
+);
+
 export const UIStateActions = {
   applySearchFilter,
+  applyGenreFilter,
 };

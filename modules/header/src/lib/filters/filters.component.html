@@ -1,0 +1,11 @@
+<h3 class="text-lg font-semibold mb-4">Genres</h3>
+<mat-chip-listbox
+  (change)="selectedGenreChange($event)"
+  aria-label="Filter By Genre"
+>
+  @for (genre of movieGenres(); track genre) {
+    <mat-chip-option color="tertiary" aria-label="Filter By {{ genre }}">
+      {{ genre }}
+    </mat-chip-option>
+  }
+</mat-chip-listbox>

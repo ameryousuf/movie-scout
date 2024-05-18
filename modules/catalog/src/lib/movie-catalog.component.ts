@@ -10,6 +10,7 @@ import {
   selectMovieLoaded,
   selectMoviesTotalCount,
   selectMoviesTotalCountLoaded,
+  selectSelectedGenre,
 } from './+state';
 import { MOVIES_PAGE_SIZE } from './constants/page';
 
@@ -31,6 +32,7 @@ export class MovieCatalogComponent {
     selectMoviesTotalCountLoaded,
   );
   readonly currentPage = this.store.selectSignal(selectCurrentPage);
+  readonly selectedGenre = this.store.selectSignal(selectSelectedGenre);
 
   readonly pageSize = MOVIES_PAGE_SIZE;
 
