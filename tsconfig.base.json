@@ -18,7 +18,8 @@
       "@movie-scout/catalog": ["modules/catalog/src/index.ts"],
       "@movie-scout/core": ["modules/core/src/index.ts"],
       "@movie-scout/header": ["modules/header/src/index.ts"],
-      "@movie-scout/movie-card": ["modules/shared/movie-card/src/index.ts"]
+      "@movie-scout/movie-card": ["modules/shared/movie-card/src/index.ts"],
+      "@movie-scout/ui": ["modules/shared/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,11 @@
+<ng-template cdkPortal>
+  <div
+    class="sidebar-content"
+    [@transform]="{
+      value: 'showing',
+      params: { transform: animationTransform() }
+    }"
+  >
+    <ng-content />
+  </div>
+</ng-template>

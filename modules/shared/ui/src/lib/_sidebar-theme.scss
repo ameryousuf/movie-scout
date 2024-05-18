@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  .sidebar-container {
+    height: 100%;
+    overflow: hidden;
+
+    border-end-end-radius: 16px;
+    border-start-end-radius: 16px;
+
+    &.sidebar-end {
+      border-end-start-radius: 16px;
+      border-start-start-radius: 16px;
+
+      border-end-end-radius: 0;
+      border-start-end-radius: 0;
+    }
+
+    .sidebar-content {
+      background-color: mat.get-theme-color($theme, surface-container-low);
+      width: 320px;
+      padding: theme('spacing.5');
+    }
+  }
+}
