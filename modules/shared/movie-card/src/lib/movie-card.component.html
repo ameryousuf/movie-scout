@@ -1,19 +1,22 @@
-<div class="flex flex-col gap-2">
-  <div class="movie-card-poster">
-    @if (movie().posterUrl; as posterUrl) {
-      <img
-        [ngSrc]="posterUrl"
-        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 15vw"
-        ngSrcset="375w, 500w, 750w, 900w"
-        [alt]="movie().title"
-        placeholder
-        fill
-      />
-    } @else {
-      <div class="flex items-center h-full text-center p-2">
-        <span class="text-3xl font-bold">{{ movie().title }}</span>
-      </div>
-    }
-  </div>
+<div
+  #card
+  class="flex flex-col gap-2"
+  [attr.aria-label]="'Movie Card: ' + movie().title"
+>
+  <app-movie-card-poster [movie]="movie()" styleClass="hover:ring" />
   <strong>{{ movie().title }}</strong>
 </div>
+
+<!-- 
+  This is a lazy-loaded component that will be rendered when the user hovers over the card.
+  It will display an overlay with more information about the movie.
+  The @defer will ensure that this component is only loaded when the card is in the viewport.
+ -->
+@defer (on viewport(card)) {
+  <app-movie-card-overlay
+    [movie]="movie()"
+    [posterElementRef]="posterElementRef()"
+  />
+} @placeholder {
+  <span></span>
+}

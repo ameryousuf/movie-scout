@@ -1,0 +1,16 @@
+<div class="movie-card-poster" [ngClass]="styleClass()">
+  @if (movie().posterUrl; as posterUrl) {
+    <img
+      [ngSrc]="posterUrl"
+      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 15vw"
+      ngSrcset="375w, 500w, 750w, 900w"
+      [alt]="movie().title"
+      placeholder
+      fill
+    />
+  } @else {
+    <div class="movie-card-poster__title">
+      <span class="font-bold">{{ movie().title }}</span>
+    </div>
+  }
+</div>

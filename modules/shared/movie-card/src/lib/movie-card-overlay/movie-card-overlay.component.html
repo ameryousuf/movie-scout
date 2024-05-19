@@ -1,0 +1,23 @@
+<ng-template
+  cdk-connected-overlay
+  cdkConnectedOverlayLockPosition
+  cdkConnectedOverlayHasBackdrop
+  cdkConnectedOverlayPanelClass="movie-card-overlay"
+  [cdkConnectedOverlayOrigin]="parentPosterElementRef()"
+  [cdkConnectedOverlayPositions]="overlayPositions"
+  [cdkConnectedOverlayOpen]="opened()"
+  [cdkConnectedOverlayWidth]="connectedOverlayWidth"
+  [cdkConnectedOverlayHeight]="connectedOverlayHeight"
+  (attach)="overlayAttached()"
+>
+  <div class="movie-card-overlay__content hover:ring" [@transform]="'showing'">
+    <div class="group flex flex-col h-full">
+      <app-movie-card-poster [movie]="movie()" class="flex-grow" />
+
+      <!-- As part of smooth transform/animation, we need to hide the info when the overlay is left -->
+      <div class="p-5 basis-1/2 hidden group-hover:flex">
+        <strong>{{ movie().title }}</strong>
+      </div>
+    </div>
+  </div>
+</ng-template>

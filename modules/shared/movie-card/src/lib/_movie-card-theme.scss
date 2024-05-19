@@ -2,17 +2,55 @@
 
 @mixin theme($theme) {
   app-movie-card {
-    .movie-card-poster {
-      position: relative;
-      border-radius: 12px;
-      height: 360px;
-      overflow: hidden;
-      background: mat.get-theme-color($theme, surface-container-high);
-      color: mat.get-theme-color($theme, on-surface-variant);
+    &:hover .movie-card-poster {
+      --tw-ring-color: #{mat.get-theme-color($theme, on-surface)};
+    }
+  }
 
-      img {
+  .movie-card-poster {
+    position: relative;
+    border-radius: 12px;
+    height: 360px;
+    overflow: hidden;
+    background: mat.get-theme-color($theme, surface-container-high);
+    color: mat.get-theme-color($theme, on-surface-variant);
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .movie-card-poster__title {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      padding: theme('spacing.2');
+      font-size: theme('fontSize.3xl');
+    }
+  }
+
+  .movie-card-overlay {
+    position: relative;
+    color: mat.get-theme-color($theme, on-surface);
+
+    .movie-card-overlay__content {
+      width: 100%;
+      border-radius: 12px;
+      background: mat.get-theme-color($theme, surface-container-low);
+      overflow: hidden;
+
+      .movie-card-poster {
         height: 100%;
-        object-fit: cover;
+        border-radius: 0;
+
+        .movie-card-poster__title {
+          font-size: theme('fontSize.4xl');
+        }
+      }
+
+      &:hover {
+        --tw-ring-color: #{mat.get-theme-color($theme, on-surface)};
       }
     }
   }
