@@ -7,6 +7,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { Movie } from '@movie-scout/core';
+import { MovieCardStore } from './+state/movie-card.store';
 import { MovieCardOverlayComponent } from './movie-card-overlay/movie-card-overlay.component';
 import { MovieCardPosterComponent } from './movie-card-poster/movie-card-poster.component';
 
@@ -17,6 +18,7 @@ import { MovieCardPosterComponent } from './movie-card-poster/movie-card-poster.
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [MovieCardStore],
 })
 export class MovieCardComponent {
   movie = input.required<Movie>();
