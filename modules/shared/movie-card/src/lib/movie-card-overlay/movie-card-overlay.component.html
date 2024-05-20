@@ -15,9 +15,81 @@
       <app-movie-card-poster [movie]="movie()" class="flex-grow" />
 
       <!-- As part of smooth transform/animation, we need to hide the info when the overlay is left -->
-      <div class="p-5 basis-1/2 hidden group-hover:flex">
-        <strong>{{ movie().title }}</strong>
+      <div
+        class="movie-card-info p-5 text-sm basis-3/5 hidden group-hover:flex flex-col gap-2"
+      >
+        <div>
+          <strong class="text-base">{{ movie().title }}</strong>
+        </div>
+
+        @if (vm(); as vm) {
+          @if (!vm.loading) {
+            <div class="flex flex-wrap gap-2 items-center justify-between">
+              <ng-container
+                *ngTemplateOutlet="
+                  ratingTmplt;
+                  context: { $implicit: vm.movie.ratingValue }
+                "
+              />
+
+              @if (vm.movie.datePublished) {
+                <span>
+                  {{ vm.movie.datePublished | date: 'yyyy' }}
+                </span>
+              }
+
+              @if (vm.movie.duration) {
+                <span>{{ vm.movie.duration }}</span>
+              }
+
+              @if (vm.movie.rating) {
+                <div
+                  [matBadge]="vm.movie.rating"
+                  matBadgeSize="large"
+                  matBadgePosition="after"
+                  matBadgeColor="accent"
+                  matBadgeDescription="IMDb Rating"
+                  class="flex [&>.mat-badge-content]:static [&>.mat-badge-content]:!m-0"
+                  attr.aria-label="IMDb Rating: {{ vm.movie.rating }}"
+                ></div>
+              }
+            </div>
+
+            @if (vm.movie.summary) {
+              <span class="movie-card-info__summary line-clamp-3">
+                {{ vm.movie.summary }}
+              </span>
+            }
+
+            @if (vm.movie.genres?.length) {
+              <mat-chip-set aria-label="Movie Genres">
+                @for (genre of vm.movie.genres; track genre.id) {
+                  <mat-chip>{{ genre.title }}</mat-chip>
+                }
+              </mat-chip-set>
+            }
+          } @else {
+            <div class="flex flex-grow justify-center items-center">
+              <mat-spinner class="!size-12" />
+            </div>
+          }
+        }
       </div>
     </div>
+  </div>
+</ng-template>
+
+<ng-template #ratingTmplt let-ratingValue>
+  <div
+    class="movie-card-info__rating"
+    attr.aria-label="Rated {{ ratingValue }} out of 5"
+  >
+    @for (value of [1, 2, 3, 4, 5]; track value) {
+      @if (value <= ratingValue) {
+        <mat-icon inline data-value="1">star_rate</mat-icon>
+      } @else {
+        <mat-icon inline data-value="0">star_rate</mat-icon>
+      }
+    }
   </div>
 </ng-template>

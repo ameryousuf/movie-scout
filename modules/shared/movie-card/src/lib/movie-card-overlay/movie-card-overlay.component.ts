@@ -9,6 +9,10 @@ import {
   viewChild,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Movie } from '@movie-scout/core';
 import {
   Observable,
@@ -22,6 +26,7 @@ import {
   take,
   timer,
 } from 'rxjs';
+import { MovieCardStore } from '../+state/movie-card.store';
 import { MovieCardPosterComponent } from '../movie-card-poster/movie-card-poster.component';
 import { movieCardOverlayAnimations } from './movie-card-overlay-animation';
 import {
@@ -32,7 +37,15 @@ import {
 @Component({
   selector: 'app-movie-card-overlay',
   standalone: true,
-  imports: [CommonModule, OverlayModule, MovieCardPosterComponent],
+  imports: [
+    CommonModule,
+    OverlayModule,
+    MatChipsModule,
+    MatBadgeModule,
+    MatIconModule,
+    MovieCardPosterComponent,
+    MatProgressSpinnerModule,
+  ],
   templateUrl: './movie-card-overlay.component.html',
   styleUrl: './movie-card-overlay.component.scss',
   animations: [movieCardOverlayAnimations.transformMovieCardOverlay],
@@ -40,6 +53,7 @@ import {
 })
 export class MovieCardOverlayComponent {
   private readonly document = inject(DOCUMENT);
+  private readonly movieCardStore = inject(MovieCardStore);
   private readonly overlay = viewChild.required(CdkConnectedOverlay);
   private readonly connectedOverlayAttached = new Subject<void>();
 
@@ -47,6 +61,8 @@ export class MovieCardOverlayComponent {
   readonly opened = toSignal(this.getHoverEventStream(), {
     initialValue: false,
   });
+  readonly vm = this.movieCardStore.vm;
+
   readonly overlayPositions = OVERLAY_POSITIONS;
 
   movie = input.required<Movie>();
@@ -70,6 +86,9 @@ export class MovieCardOverlayComponent {
 
   overlayAttached() {
     this.connectedOverlayAttached.next();
+
+    // Fetch the movie info when the overlay is attached to the DOM
+    this.movieCardStore.fetchMovieInfo(this.movie().id);
   }
 
   private getHoverEventStream(): Observable<boolean> {
