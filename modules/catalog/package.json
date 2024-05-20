@@ -11,7 +11,8 @@
     "rxjs": "~7.8.0",
     "@ngrx/entity": "^17.2.0",
     "@angular/material": "^17.3.8",
-    "@movie-scout/movie-card": "0.0.1"
+    "@movie-scout/movie-card": "0.0.1",
+    "ngx-skeleton-loader": "^9.0.0"
   },
   "dependencies": {},
   "sideEffects": false

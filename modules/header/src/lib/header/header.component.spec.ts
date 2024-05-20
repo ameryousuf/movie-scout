@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterTestingModule } from '@angular/router/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 import { MockComponent } from 'ng-mocks';
 import { ThemeToggleComponent } from '../theme-toggle/theme-toggle.component';
 import { HeaderComponent } from './header.component';
@@ -14,6 +15,7 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HeaderComponent, RouterTestingModule],
+      providers: [provideMockStore()],
     })
       .overrideComponent(HeaderComponent, {
         set: {

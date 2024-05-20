@@ -3,6 +3,7 @@
 @use '../modules/header/src/lib/toolbar-row/toolbar-row-theme';
 @use '../modules/shared/movie-card/src/lib/movie-card-theme';
 @use '../modules/shared/ui/src/lib/sidebar-theme';
+@use './assets//sass//integration';
 
 @mixin theme($theme) {
   body {
@@ -13,4 +14,5 @@
   @include toolbar-row-theme.theme($theme);
   @include movie-card-theme.theme($theme);
   @include sidebar-theme.theme($theme);
+  @include integration.theme($theme);
 }

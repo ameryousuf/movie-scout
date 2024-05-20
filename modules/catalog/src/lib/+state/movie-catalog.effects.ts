@@ -2,7 +2,15 @@ import { Injectable, inject } from '@angular/core';
 import { ApiService, UIStateActions } from '@movie-scout/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, filter, map, of, switchMap, withLatestFrom } from 'rxjs';
+import {
+  catchError,
+  filter,
+  map,
+  of,
+  switchMap,
+  tap,
+  withLatestFrom,
+} from 'rxjs';
 import { MOVIES_PAGE_SIZE } from '../constants/page';
 import * as MovieCatalogActions from './movie-catalog.actions';
 import {
@@ -27,6 +35,9 @@ export class MovieCatalogEffects {
         this.store.select(selectSearchTerm),
         this.store.select(selectSelectedGenre),
       ),
+      tap(() =>
+        this.store.dispatch(UIStateActions.setLoading({ loading: true })),
+      ),
       switchMap(([{ page }, searchTerm, selectedGenre]) =>
         this.apiService
           .getMovies({
@@ -46,6 +57,9 @@ export class MovieCatalogEffects {
               of(MovieCatalogActions.loadMoviesFailure({ error })),
             ),
           ),
+      ),
+      tap(() =>
+        this.store.dispatch(UIStateActions.setLoading({ loading: false })),
       ),
     ),
   );

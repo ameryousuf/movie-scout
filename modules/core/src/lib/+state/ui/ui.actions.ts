@@ -10,7 +10,13 @@ export const applyGenreFilter = createAction(
   props<{ genre: string }>(),
 );
 
+export const setLoading = createAction(
+  '[Movie UI] Set Loading',
+  props<{ loading: boolean }>(),
+);
+
 export const UIStateActions = {
   applySearchFilter,
   applyGenreFilter,
+  setLoading,
 };

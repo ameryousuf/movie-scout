@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  $type: mat.get-theme-type($theme);
+
+  .skeleton-loader {
+    background-color: mat.get-theme-color(
+      $theme,
+      surface-container-highest
+    ) !important;
+
+    &:before {
+      background-image: if(
+        $type == dark,
+        linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.2), transparent),
+        linear-gradient(90deg, #fff0, #fff9, #fff0)
+      ) !important;
+    }
+  }
+}

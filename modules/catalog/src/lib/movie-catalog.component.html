@@ -5,6 +5,7 @@
     </h2>
   }
   <mat-paginator
+    [disabled]="!totalCountLoaded()"
     [pageIndex]="currentPage() - 1"
     [length]="totalCount()"
     [pageSize]="pageSize"
@@ -14,10 +15,37 @@
     aria-label="Select movie page"
   />
 </div>
-<div
-  class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"
->
-  @for (movie of movies(); track movie.id) {
-    <app-movie-card [movie]="movie" />
-  }
-</div>
+
+@if (!moviesLoaded() || movies().length) {
+  <div
+    class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"
+  >
+    @if (moviesLoaded()) {
+      @for (movie of movies(); track movie.id) {
+        <app-movie-card [movie]="movie" />
+      }
+    } @else {
+      @for (_ of loadingSkeletonArray; track _) {
+        <ng-container *ngTemplateOutlet="loadingTmplt" />
+      }
+    }
+  </div>
+} @else {
+  <ng-container *ngTemplateOutlet="noResultTmplt" />
+}
+
+<ng-template #loadingTmplt>
+  <div>
+    <ngx-skeleton-loader
+      [theme]="{ height: '360px', 'border-radius': '12px' }"
+    />
+    <ngx-skeleton-loader [theme]="{ width: '80%', 'border-radius': '12px' }" />
+  </div>
+</ng-template>
+
+<ng-template #noResultTmplt>
+  <div class="text-center opacity-80">
+    <div class="text-9xl md:text-[200px] leading-tight mb-7">(>_<)</div>
+    <p class="text-xl md:text-2xl">No matching movies!</p>
+  </div>
+</ng-template>

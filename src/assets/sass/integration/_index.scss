@@ -1,0 +1,5 @@
+@use './ngx-skeletor-loader';
+
+@mixin theme($theme) {
+  @include ngx-skeletor-loader.theme($theme);
+}

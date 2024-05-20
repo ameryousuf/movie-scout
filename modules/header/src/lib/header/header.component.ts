@@ -1,8 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { selectLoading } from '@movie-scout/core';
+import { Store } from '@ngrx/store';
 import { ThemeToggleComponent } from '../theme-toggle/theme-toggle.component';
 import { ToolbarRowComponent } from '../toolbar-row/toolbar-row.component';
 
@@ -14,6 +17,7 @@ import { ToolbarRowComponent } from '../toolbar-row/toolbar-row.component';
     RouterModule,
     MatToolbarModule,
     MatIconModule,
+    MatProgressBarModule,
     ToolbarRowComponent,
     ThemeToggleComponent,
   ],
@@ -21,4 +25,8 @@ import { ToolbarRowComponent } from '../toolbar-row/toolbar-row.component';
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  private readonly store = inject(Store);
+
+  readonly loading = this.store.selectSignal(selectLoading);
+}

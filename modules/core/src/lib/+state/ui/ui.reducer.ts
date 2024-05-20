@@ -7,6 +7,7 @@ export interface UIState {
   searchTerm: string;
   movieGenres: string[];
   selectedMovieGenre: string | undefined;
+  loading: boolean;
 }
 
 export const initialState: UIState = {
@@ -39,6 +40,7 @@ export const initialState: UIState = {
     'Western',
   ],
   selectedMovieGenre: undefined,
+  loading: false,
 };
 
 const uiReducer = createReducer(
@@ -50,6 +52,10 @@ const uiReducer = createReducer(
   on(UIStateActions.applyGenreFilter, (state, { genre }) => ({
     ...state,
     selectedMovieGenre: genre,
+  })),
+  on(UIStateActions.setLoading, (state, { loading }) => ({
+    ...state,
+    loading,
   })),
 );
 
@@ -70,4 +76,5 @@ export const {
   selectMovieGenres,
   selectSelectedMovieGenre,
   selectFiltersApplied,
+  selectLoading,
 } = uiFeature;
