@@ -1,10 +1,5 @@
 /* eslint-disable @angular-eslint/no-host-metadata-property */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ViewEncapsulation,
-  inject,
-} from '@angular/core';
+import { Component, ViewEncapsulation, inject } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '@movie-scout/header';
@@ -19,7 +14,6 @@ import { HeaderComponent } from '@movie-scout/header';
     class: 'app-root max-w-screen-2xl px-6 md:px-16',
   },
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   private readonly iconRegistry = inject(MatIconRegistry);

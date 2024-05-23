@@ -1,13 +1,6 @@
 import { CdkConnectedOverlay, OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule, DOCUMENT } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  inject,
-  input,
-  viewChild,
-} from '@angular/core';
+import { Component, ElementRef, inject, input, viewChild } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatChipsModule } from '@angular/material/chips';
@@ -49,7 +42,6 @@ import {
   templateUrl: './movie-card-overlay.component.html',
   styleUrl: './movie-card-overlay.component.scss',
   animations: [movieCardOverlayAnimations.transformMovieCardOverlay],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieCardOverlayComponent {
   private readonly document = inject(DOCUMENT);

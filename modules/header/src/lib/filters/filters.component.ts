@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatChipListboxChange, MatChipsModule } from '@angular/material/chips';
 import { UIStateActions, selectMovieGenres } from '@movie-scout/core';
 import { Store } from '@ngrx/store';
@@ -10,7 +10,6 @@ import { Store } from '@ngrx/store';
   imports: [CommonModule, MatChipsModule],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FiltersComponent {
   private readonly store = inject(Store);

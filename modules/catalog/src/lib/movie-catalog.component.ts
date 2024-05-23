@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MovieCardComponent } from '@movie-scout/movie-card';
 import { Store } from '@ngrx/store';
@@ -26,7 +26,6 @@ import { MOVIES_PAGE_SIZE } from './constants/page';
   ],
   templateUrl: './movie-catalog.component.html',
   styleUrl: './movie-catalog.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieCatalogComponent {
   private readonly store = inject(Store);

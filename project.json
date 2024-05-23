@@ -13,7 +13,7 @@
         "outputPath": "dist/movie-scout",
         "index": "./src/index.html",
         "browser": "./src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [],
         "tsConfig": "./tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["./src/favicon.ico", "./src/assets"],

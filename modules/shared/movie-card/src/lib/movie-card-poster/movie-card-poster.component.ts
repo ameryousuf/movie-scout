@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Movie } from '@movie-scout/core';
 
 @Component({
@@ -8,7 +8,6 @@ import { Movie } from '@movie-scout/core';
   imports: [CommonModule, NgOptimizedImage],
   templateUrl: './movie-card-poster.component.html',
   styleUrl: './movie-card-poster.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieCardPosterComponent {
   movie = input.required<Movie>();

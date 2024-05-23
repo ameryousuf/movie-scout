@@ -2,7 +2,6 @@ import { Overlay, OverlayModule, OverlayRef } from '@angular/cdk/overlay';
 import { CdkPortal, PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import {
-  ChangeDetectionStrategy,
   Component,
   DestroyRef,
   OnDestroy,
@@ -31,7 +30,6 @@ import { sidebarAnimations } from './sidebar-animation';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
   animations: [sidebarAnimations.transformSidebar],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent implements OnDestroy {
   private readonly destroyRef = inject(DestroyRef);

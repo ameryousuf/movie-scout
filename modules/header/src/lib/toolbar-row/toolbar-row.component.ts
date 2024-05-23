@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import {
-  ChangeDetectionStrategy,
   Component,
   DestroyRef,
   ElementRef,
@@ -37,7 +36,6 @@ import { FiltersComponent } from '../filters/filters.component';
   ],
   templateUrl: './toolbar-row.component.html',
   styleUrl: './toolbar-row.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarRowComponent implements OnInit {
   private readonly store = inject(Store);

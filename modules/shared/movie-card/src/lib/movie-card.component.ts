@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  input,
-  viewChild,
-} from '@angular/core';
+import { Component, ElementRef, input, viewChild } from '@angular/core';
 import { Movie } from '@movie-scout/core';
 import { MovieCardStore } from './+state/movie-card.store';
 import { MovieCardOverlayComponent } from './movie-card-overlay/movie-card-overlay.component';
@@ -17,7 +11,6 @@ import { MovieCardPosterComponent } from './movie-card-poster/movie-card-poster.
   imports: [CommonModule, MovieCardPosterComponent, MovieCardOverlayComponent],
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [MovieCardStore],
 })
 export class MovieCardComponent {

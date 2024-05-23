@@ -56,16 +56,14 @@
       "unitTestRunner": "jest-jasmine2"
     },
     "@nx/angular:component": {
-      "style": "scss",
-      "changeDetection": "OnPush"
+      "style": "scss"
     },
     "@nx/angular:library": {
       "linter": "eslint",
       "unitTestRunner": "jest",
       "style": "scss",
       "prefix": "app",
-      "flat": true,
-      "changeDetection": "OnPush"
+      "flat": true
     }
   },
   "defaultProject": "movie-scout"

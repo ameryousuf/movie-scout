@@ -1,5 +1,5 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -10,7 +10,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule],
   templateUrl: './theme-toggle.component.html',
   styleUrl: './theme-toggle.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThemeToggleComponent {
   private readonly document = inject(DOCUMENT);
@@ -40,9 +39,7 @@ export class ThemeToggleComponent {
   }
 
   private getThemeLinkElement() {
-    return (
-      this.getExistingThemeLinkElement() || this.createThemeLinkElement()
-    );
+    return this.getExistingThemeLinkElement() || this.createThemeLinkElement();
   }
 
   private getExistingThemeLinkElement() {
