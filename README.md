@@ -9,7 +9,7 @@ You can try out the deployed application here: https://movie-scout--movie-scout-
 ## Technologies Used
 
 - Deployed to the newly released Firebase Hosting service.
-- Build with the latest stable versions of Angular (v17.3.0) and NgRx (v17.2.0) for a performant and future-proof application to take advantage of the latest features and improvements, such as the Signal Based Component and the new Control Flow.
+- Build with the latest stable versions of Angular (v18) and NgRx (v18) for a performant and future-proof application to take advantage of the latest features and improvements, such as the Signal Based Component and the new Control Flow.
 - Uses NgRx Store and Component Store to manage the application state.
 - Material 3 (The latest evolution of [Material Design](https://m3.material.io/)) for a modern and responsive UI with dark/light mode support.
 - Optimized a responsive design using Angular Material and Tailwind CSS.
